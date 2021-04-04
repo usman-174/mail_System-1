@@ -1,15 +1,28 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
-import { me } from "../actions/auth";
+import React, { useEffect, useState } from "react";
 import logo from "../Images/pcLogo.png";
+
+import { Link, useLocation } from "react-router-dom";
+import decode from "jwt-decode";
 
 function Welcome() {
   const location = useLocation();
-  const authData = useSelector((state) => state.auth.authData);
-  const dispatch = useDispatch();
+
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("person")));
+
+  const logout = () => {
+    localStorage.clear("person");
+    setUser(null);
+  };
+
   useEffect(() => {
-    dispatch(me());
+    const token = user?.token;
+    // JWT token expiry check
+    if (token) {
+      const decodedToken = decode(token);
+      setUser(JSON.parse(localStorage.getItem("person")));
+      console.log("user:", user);
+      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+    }
   }, [location]);
 
   return (
@@ -18,11 +31,10 @@ function Welcome() {
         <header>
           <img src={logo} alt="logo" className="logo" />
         </header>
-        {authData?.user ? (
+        {user ? (
           <blockquote className="blockquote text-center mt-5">
             <footer className="blockquote-footer">
-              Welcome {authData._doc?.name}
-              {/* {user?.theUser.name} */}
+              Welcome {user?.theUser.name}
             </footer>
             <p className="pt-2">Head over to the INBOX to check your emails</p>
           </blockquote>

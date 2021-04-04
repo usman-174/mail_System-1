@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../Images/pcLogo.png";
 import { Link, useHistory } from "react-router-dom";
-import { signup } from "../actions/auth";
-import { useDispatch, useSelector } from "react-redux";
+import { signin, signup } from "../actions/auth";
+import { useDispatch } from "react-redux";
 
 export default function Registration() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const authError = useSelector((state) => state.auth.authError);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -55,9 +54,6 @@ export default function Registration() {
       <div className="wrapper fadeInDown">
         <div id="formContent">
           <div className="fadeIn first">
-            <div className="alert alert-danger" role="alert">
-              {authError && <h4>{authError.error}</h4>}
-            </div>
             <div className="LR-logo">
               <img src={logo} id="icon" alt="User Icon" />
             </div>

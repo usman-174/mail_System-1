@@ -45,8 +45,8 @@ a:hover {
   background-size: cover;
 }
 .pc-design {
-  width: 60%;
-  margin: 0 auto;
+  height: 95vh;
+  margin-left: 15%;
 }
 .l-bg {
   background-image: url("./Images/lrBg.jpg");
@@ -386,14 +386,13 @@ input[type="password"]:placeholder {
 }
 
 .dashboard-footer footer {
-  color: black;
+  background-color: black;
+  color: #cccccc;
   position: fixed;
   bottom: 0;
-  width: 60%;
+  width: 100vw;
+  margin-left: 120px;
   text-align: center;
-}
-.dashboard-footer footer::before {
-  content: "©";
 }
 /* <=================Compose> */
 
@@ -537,11 +536,4 @@ tr {
   line-height: 1.428571429;
   border-radius: 15px;
   margin-top: 0;
-}
-
-.alert,
-.alert-danger {
-  border: none;
-  margin: 0;
-  padding: 0;
 }
