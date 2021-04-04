@@ -1,12 +1,12 @@
-import { AUTH, LOGOUT } from "../actionTypes";
+import { AUTH, LOGOUT, AUTH_ERROR } from "../actionTypes";
 
-const authReducer = (state = { authData: null }, action) => {
+const authReducer = (state = { authData: null, authError: null }, action) => {
   switch (action.type) {
     case AUTH:
-      localStorage.setItem("person", JSON.stringify({ ...action?.data }));
-      return { ...state, authData: action?.data };
+      return { ...state, authError: null, authData: action?.data };
+    case AUTH_ERROR:
+      return { ...state, authError: action?.data };
     case LOGOUT:
-      localStorage.clear("person");
       return { ...state, authData: null };
     default:
       return state;

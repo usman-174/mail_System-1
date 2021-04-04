@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const schema = mongoose.Schema;
+const mongoose = require("mongoose")
+const schema = mongoose.Schema
 
 const userSchema = new schema({
   name: {
@@ -9,6 +9,16 @@ const userSchema = new schema({
   email: {
     type: String,
     required: true,
+    
+  },
+  googleId: {
+    type: String,
+    required: false,
+  },
+  origin: {
+    type: String,
+    required: true,
+    default: "local",
   },
   password: {
     type: String,
@@ -16,12 +26,12 @@ const userSchema = new schema({
   },
   designation: {
     type: String,
-    required: true,
+    required: false,
   },
   department: {
     type: String,
-    required: true,
+    required: false,
   },
-});
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+})
+const User = mongoose.model("User", userSchema)
+module.exports = User

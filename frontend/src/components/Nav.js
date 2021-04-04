@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react"
+import { Link, useHistory } from "react-router-dom"
+import { useDispatch,useSelector } from "react-redux"
+import { me ,logout} from "../actions/auth"
 
 import {
   BsPencil,
@@ -8,17 +9,19 @@ import {
   FaMeetup,
   SiPivotaltracker,
   RiDashboardLine,
-} from "react-icons/all";
+} from "react-icons/all"
 
 export default function Navs() {
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("person")));
+  const authData = useSelector(state=>state.auth.authData)
+  const history = useHistory()
+  const dispatch = useDispatch()
 
-  const logout = () => {
-    dispatch({ type: "LOGOUT" });
-    history.push("/");
-  };
+  const Logout = () => {
+    dispatch(logout(history))
+  }
+  useEffect(() => {
+    dispatch(me())
+  }, [])
 
   return (
     <div>
@@ -61,8 +64,8 @@ export default function Navs() {
               </li>
             </Link>
             <footer>
-              {user ? (
-                <Link to="./login" onClick={logout}>
+              {authData?.user ? (
+                <Link to="./login" onClick={Logout}>
                   Logout
                 </Link>
               ) : (
@@ -73,5 +76,5 @@ export default function Navs() {
         </div>
       </div>
     </div>
-  );
+  )
 }

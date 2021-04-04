@@ -1,4 +1,4 @@
 const AUTH = "AUTH";
 const LOGOUT = "LOGOUT";
-
-export { AUTH, LOGOUT };
+const AUTH_ERROR = "AUTH_ERROR";
+export { AUTH, LOGOUT, AUTH_ERROR };
