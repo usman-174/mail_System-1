@@ -1,21 +1,21 @@
-import React from "react"
-import { GoogleLogin } from "react-google-login"
-import { useDispatch } from "react-redux"
-import { useHistory } from "react-router"
-import { GoogleLogIn } from "../actions/auth"
-import { useGoogleLogout } from "react-google-login"
-const GoogleAuth = ({}) => {
-  const router = useHistory()
-  const dispatch = useDispatch()
+import React from "react";
+import { GoogleLogin } from "react-google-login";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { GoogleLogIn } from "../actions/auth";
+import { useGoogleLogout } from "react-google-login";
+const GoogleAuth = () => {
+  const router = useHistory();
+  const dispatch = useDispatch();
 
   const { signOut } = useGoogleLogout({
     clientId:
       "897919728212-27u8rfoggnvqkh975k52ij2qs4j7mnke.apps.googleusercontent.com",
     onLogoutSuccess: () => {
-      console.log("on google logout")
+      console.log("on google logout");
     },
     onFailure: () => console.log("FAiled"),
-  })
+  });
 
   const GoogleSuccess = async ({ profileObj }) => {
     dispatch(
@@ -28,12 +28,12 @@ const GoogleAuth = ({}) => {
         router,
         signOut
       )
-    )
-  }
+    );
+  };
 
   const GoogleFailure = (e) => {
-    alert("There was an error while processing. Please try again later.")
-  }
+    alert("There was an error while processing. Please try again later.");
+  };
 
   return (
     <>
@@ -47,13 +47,13 @@ const GoogleAuth = ({}) => {
             >
               G+    LOGIN WITH GOOGLE
             </button>
-          )
+          );
         }}
         onSuccess={GoogleSuccess}
         onFailure={GoogleFailure}
         cookiePolicy="single_host_origin"
       />
     </>
-  )
-}
-export default GoogleAuth
+  );
+};
+export default GoogleAuth;

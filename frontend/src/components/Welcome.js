@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { me } from "../actions/auth";
 import logo from "../Images/pcLogo.png";
+import MailButtons from "./MailButtons/MailButtons";
 
 function Welcome() {
   const location = useLocation();
@@ -10,10 +11,11 @@ function Welcome() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(me());
-  }, [location]);
+  }, [dispatch, location]);
 
   return (
     <div>
+      <MailButtons />
       <div className="bg">
         <header>
           <img src={logo} alt="logo" className="logo" />
@@ -21,7 +23,7 @@ function Welcome() {
         {authData?.user ? (
           <blockquote className="blockquote text-center mt-5">
             <footer className="blockquote-footer">
-              Welcome {authData._doc?.name}
+              Welcome {authData.user.name}
               {/* {user?.theUser.name} */}
             </footer>
             <p className="pt-2">Head over to the INBOX to check your emails</p>

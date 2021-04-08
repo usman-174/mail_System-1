@@ -1,0 +1,10 @@
+#mailButtons {
+  padding: 0.5rem 0;
+  background-color: var(--nav-color);
+}
+
+#mailButtons .content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}

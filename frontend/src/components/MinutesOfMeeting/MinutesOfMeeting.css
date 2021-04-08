@@ -1,0 +1,46 @@
+#mom .inbox-label {
+  background-color: rgb(230, 230, 230);
+  padding: 1.2rem 0.3rem;
+  font-size: 0.8rem;
+  color: black;
+}
+
+#mom,
+#mom-2 {
+  margin-top: 1rem;
+  padding: 1rem 0.5rem;
+  border: 10px solid var(--nav-color);
+  border-radius: 20px;
+}
+#mom-2 {
+  background-color: var(--nav-color);
+}
+#mom-2 .titles {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#mom-2 .content .title {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#mom-2 .content {
+  color: white;
+}
+
+#mom-2 .content .single-row ul li {
+  padding: 0.5rem 1rem;
+}
+
+#mom-2 .content .items {
+  list-style: none;
+}
+
+#mom-2 .content .items .item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  border: 1px solid black;
+}

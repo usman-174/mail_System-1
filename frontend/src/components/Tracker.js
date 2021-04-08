@@ -1,6 +1,6 @@
 import React from "react";
 
-import Nav from "./Nav";
+import Nav from "./Header";
 
 export default function Meeting() {
   return (

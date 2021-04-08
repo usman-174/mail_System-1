@@ -1,9 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Auth from "./components/Auth/Auth";
-import Home from "./components/Home/Home";
-import Navbar from "./components/Navbar/Navbar";
-import { Container } from "@material-ui/core";
+import { Container } from "react-bootstrap";
 
 import Welcome from "./components/Welcome";
 import Login from "./components/Login";
@@ -13,13 +11,13 @@ import Compose from "./components/Compose";
 import Inbox from "./components/Inbox";
 import Meetings from "./components/Meetings";
 import Tracker from "./components/Tracker";
-import Navs from "./components/Nav";
+import Navs from "./components/Header";
 import Error from "./components/errorPage/Error";
 
 export default function App() {
   return (
     <Router>
-      <Container>
+      <Container fluid>
         <Navs />
         <Switch>
           <Route path="/" exact component={Welcome} />

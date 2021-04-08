@@ -20,7 +20,7 @@ export default function Login() {
     if (authData?.user) {
       history.push("/");
     }
-  }, []);
+  }, [authData?.user, history]);
 
   const [formData, setFormData] = useState(initialState);
 
@@ -82,7 +82,7 @@ export default function Login() {
                 />
                 <input type="submit" className="fadeIn fourth" value="Login" />
               </form>
-              {authError ? <GoogleAuth /> : <h1>This is not null</h1>}
+              <GoogleAuth />
               {/* <GoogleAuth /> */}
               <div id="formFooter">
                 <Link to="/registration">
