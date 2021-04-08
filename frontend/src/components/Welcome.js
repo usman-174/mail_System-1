@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { me } from "../actions/auth";
 import logo from "../Images/pcLogo.png";
-import MailButtons from "./MailButtons/MailButtons";
 
 function Welcome() {
   const location = useLocation();
@@ -15,7 +14,6 @@ function Welcome() {
 
   return (
     <div>
-      <MailButtons />
       <div className="bg">
         <header>
           <img src={logo} alt="logo" className="logo" />

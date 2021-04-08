@@ -3,15 +3,12 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import CKEditor from "react-ckeditor-component";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { useSelector } from "react-redux";
-import MailButtons from "./MailButtons/MailButtons";
 
 export default function Compose() {
-  const authData = useSelector((state) => state.auth.authData);
+  // const authData = useSelector((state) => state.auth.authData);
   const [value, onChange] = useState(new Date());
   return (
     <>
-      <MailButtons />
       <div id="compose">
         <div>
           <Container fluid>
@@ -29,7 +26,7 @@ export default function Compose() {
               </div>
               <div className="col-sm-12 col-md-12 col-lg-10">
                 <div className="title">
-                  <i class="fas fa-recycle"></i>
+                  <i className="fas fa-recycle"></i>
                   <h3>Compose Letter</h3>
                 </div>
                 <div className="container-fluid-compose-header">
@@ -106,11 +103,11 @@ export default function Compose() {
                         </div>
                         <div className="dates">
                           <div className="date">
-                            <i class="far fa-calendar-plus"></i>
+                            <i className="far fa-calendar-plus"></i>
                             {new Date().toLocaleString("en-us")}
                           </div>
                           <div className="date">
-                            <i class="fas fa-calendar-week"></i>
+                            <i className="fas fa-calendar-week"></i>
                             View Circulation list
                           </div>
                         </div>
@@ -128,12 +125,12 @@ export default function Compose() {
                 <Container fluid>
                   <div className="submitter">
                     <Button variant="primary" className="bt-footer" size="md">
-                      <i class="fas fa-print"></i>
+                      <i className="fas fa-print"></i>
                       <div>Print</div>
                     </Button>
 
                     <Button variant="primary" className="bt-footer" size="md">
-                      <i class="far fa-share-square"></i>
+                      <i className="far fa-share-square"></i>
                       <div>Send</div>
                     </Button>
                   </div>

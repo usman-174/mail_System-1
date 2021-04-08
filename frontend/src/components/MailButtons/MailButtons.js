@@ -2,18 +2,17 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import "./MailButtons.css";
 import MailButton from "./MailButton/MailButton";
-import { one, two, three, four, five } from "../../Images/mailButtons";
+import { one, three, four, five } from "../../Images/mailButtons";
 
 export default function MailButtons() {
   return (
     <div id="mailButtons">
       <Container fluid>
         <div className="content">
-          <MailButton image={one} text="Mail in" route="/Inbox" />
-          <MailButton image={five} text="Mail out" route="/" />
-          <MailButton image={three} text="pending" route="/" />
-          <MailButton image={two} text="Discuss" route="/" />
-          <MailButton image={four} text="urgent" route="/" />
+          <MailButton image={one} text="Inbox" route="/inbox" />
+          <MailButton image={five} text="compose" route="/compose" />
+          <MailButton image={three} text="Sent" route="/" />
+          <MailButton image={four} text="Urgent" route="/" />
         </div>
       </Container>
     </div>
