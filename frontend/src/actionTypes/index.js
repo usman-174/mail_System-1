@@ -6,6 +6,7 @@ const SEND_MAIL = "SEND_MAIL";
 const ALL_MAILS = "ALL_MAILS";
 const MAIL_ERROR = "MAIL_ERROR";
 const RESET_STATE = "RESET_STATE";
+const GET_SEND_MAILS = "GET_SEND_MAILS";
 
 export {
   AUTH,
@@ -14,5 +15,5 @@ export {
   SEND_MAIL,
   ALL_MAILS,
   MAIL_ERROR,
-  RESET_STATE,
+  RESET_STATE,GET_SEND_MAILS
 };

@@ -3,18 +3,20 @@ const schema = mongoose.Schema;
 
 const mailSchema = new schema(
   {
-    name: {
-      type: String,
-      required: true,
-      default: "No message",
-    },
+    
     message: {
       type: String,
       required: true,
-      default: "No Name",
+    
     },
-    userId: { type: mongoose.Types.ObjectId },
-    mails: [],
+    text: {
+      type: String,
+      required: true,
+  
+    },
+    to :{type: mongoose.Schema.Types.ObjectId ,ref : 'User',required:true},
+    from: { type: mongoose.Schema.Types.ObjectId ,ref : 'User',required:true},
+    
   },
   { timestamps: true }
 );
