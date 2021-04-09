@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { allMails } = require("../controller/mails");
-const auth = require("../Middleware/auth");
+const { allMails, sendMail } = require("../controller/mails");
+// const auth = require("../Middleware/auth");
 
-router.get("/", auth, allMails);
-// router.post("/", users);
+router.get("/", allMails);
+router.post("/send", sendMail);
 // router.delete("/:id", users);
 // router.update("/:id", users);
 

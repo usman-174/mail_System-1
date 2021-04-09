@@ -1,14 +1,67 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import CKEditor from "react-ckeditor-component";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { send_mail } from "../actions/mails";
+import Toast from "../components/Toast/Toast";
+import { RESET_STATE } from "../actionTypes";
 
 export default function Compose() {
-  // const authData = useSelector((state) => state.auth.authData);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const mailError = useSelector((state) => state.mails?.mailError);
+  const mailData = useSelector((state) => state.mails?.mails?.message);
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch({ type: RESET_STATE });
+    }, 5000);
+  }, [mailData, mailError]);
+
+  const initialState = {
+    text: "",
+    from: "",
+    email: "",
+    info: "",
+  };
+
+  const [formData, setFormData] = useState(initialState);
+
+  function validateForm() {
+    if (!formData.text || !formData.email || !formData.from || !formData.info) {
+      alert("PLease fill the required fields");
+      return false;
+    } else if (
+      !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+        formData?.email
+      )
+    ) {
+      alert("Email Invalid !!!");
+      return false;
+    } else return true;
+  }
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    let check = validateForm();
+    if (check) {
+      dispatch(send_mail(formData, history));
+      setFormData({ ...initialState });
+    }
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const [value, onChange] = useState(new Date());
   return (
     <>
+      {mailData && <Toast message={mailData} />}
+      {mailError?.error && <Toast message={mailError.error} />}
       <div id="compose">
         <div>
           <Container fluid>
@@ -33,17 +86,39 @@ export default function Compose() {
                   <Row>
                     <Col sm={8} md={4} lg={8}>
                       <div className="inputs">
-                        <label for="text">Text</label>
-                        <input type="text" placeholder="" />
+                        <label htmlFor="text">Text</label>
+                        <input
+                          type="text"
+                          onChange={handleChange}
+                          name="text"
+                          value={formData.text}
+                        />
                         <br />
-                        <label for="text">From</label>
-                        <input type="text" placeholder="" />
+                        <label htmlFor="text">From</label>
+                        <input
+                          type="text"
+                          onChange={handleChange}
+                          name="from"
+                          value={formData.from}
+                        />
                         <br />
-                        <label for="text">To</label>
-                        <input type="text" placeholder="" />
+                        <label htmlFor="exampleInputEmail1">To</label>
+                        <input
+                          type="email"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                          onChange={handleChange}
+                          name="email"
+                          value={formData.email}
+                        />
                         <br />
-                        <label for="text">Info</label>
-                        <input type="text" placeholder="" />
+                        <label htmlFor="text">Info</label>
+                        <input
+                          type="text"
+                          onChange={handleChange}
+                          name="info"
+                          value={formData.info}
+                        />
                         {/* <label for="date">Deadline</label>
                       <input className="my-select" type="date" placeholder="" />
                       <br />
@@ -124,15 +199,22 @@ export default function Compose() {
                 </div>
                 <Container fluid>
                   <div className="submitter">
-                    <Button variant="primary" className="bt-footer" size="md">
-                      <i className="fas fa-print"></i>
-                      <div>Print</div>
-                    </Button>
+                    <Button
+                      as="input"
+                      type="submit"
+                      className="bt-footer"
+                      size="md"
+                      value="print"
+                    />
 
-                    <Button variant="primary" className="bt-footer" size="md">
-                      <i className="far fa-share-square"></i>
-                      <div>Send</div>
-                    </Button>
+                    <Button
+                      as="input"
+                      type="submit"
+                      className="bt-footer"
+                      size="md"
+                      value="send"
+                      onClick={submitHandler}
+                    />
                   </div>
                 </Container>
               </div>

@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const cookie = require("cookie");
 const sendCookie = require("../utils/sendCookie");
 const { v4 } = require("uuid");
+const Mail = require("../models/mailModel");
 const signup = async (req, res) => {
   const { name, email, password, designation, department } = req.body;
 
@@ -27,6 +28,8 @@ const signup = async (req, res) => {
       designation,
       department,
     });
+
+    await Mail.create({ ...Mail, userId: newUser._id });
 
     // Assigning the token
     const token = jwt.sign(

@@ -34,12 +34,14 @@ export default function Header() {
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
-            <MailButtons />
-          </Nav>
+          <Nav className="mr-auto">{authData?.user && <MailButtons />}</Nav>
           <Nav>
             {authData?.user ? (
-              <Link className="link" to="./login" onClick={Logout}>
+              <Link
+                className="link btn btn-danger"
+                to="./login"
+                onClick={Logout}
+              >
                 Logout
               </Link>
             ) : (

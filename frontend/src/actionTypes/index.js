@@ -1,4 +1,18 @@
 const AUTH = "AUTH";
 const LOGOUT = "LOGOUT";
 const AUTH_ERROR = "AUTH_ERROR";
-export { AUTH, LOGOUT, AUTH_ERROR };
+
+const SEND_MAIL = "SEND_MAIL";
+const ALL_MAILS = "ALL_MAILS";
+const MAIL_ERROR = "MAIL_ERROR";
+const RESET_STATE = "RESET_STATE";
+
+export {
+  AUTH,
+  LOGOUT,
+  AUTH_ERROR,
+  SEND_MAIL,
+  ALL_MAILS,
+  MAIL_ERROR,
+  RESET_STATE,
+};
