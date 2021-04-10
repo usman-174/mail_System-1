@@ -9,6 +9,7 @@ import Compose from "./components/Compose";
 import Inbox from "./components/Inbox";
 import Header from "./components/Header";
 import Error from "./components/errorPage/Error";
+import Sent from "./components/Sent/Sent";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
 
           <Route path="/compose" component={Compose} />
           <Route path="/inbox" component={Inbox} />
+          <Route path="/sent" component={Sent} />
           <Route path="*" component={Error} />
         </Switch>
       </Container>

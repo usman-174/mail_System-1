@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
-const shortid = require("shortid");
 
 const userSchema = new schema(
   {
@@ -33,8 +32,7 @@ const userSchema = new schema(
       type: String,
       required: false,
     },
-    sentMails : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Mail' }]
-    
+    sentMails: [{ type: mongoose.Schema.Types.ObjectId, ref: "Mail" }],
   },
   { timestamps: true }
 );

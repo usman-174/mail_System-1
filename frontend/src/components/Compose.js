@@ -13,13 +13,13 @@ export default function Compose() {
   const dispatch = useDispatch();
   const history = useHistory();
   const mailError = useSelector((state) => state.mails?.mailError);
-  const mailData = useSelector((state) => state.mails?.mails?.message);
+  const mailData = useSelector((state) => state.mails?.sendMails?.message);
 
   useEffect(() => {
     setTimeout(() => {
       dispatch({ type: RESET_STATE });
-    }, 5000);
-  }, [mailData, mailError]);
+    }, 3000);
+  }, [mailData, mailError, dispatch]);
 
   const initialState = {
     text: "",

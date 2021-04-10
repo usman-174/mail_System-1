@@ -3,8 +3,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookie = require("cookie");
 const sendCookie = require("../utils/sendCookie");
-const { v4 } = require("uuid");
-const Mail = require("../models/mailModel");
 const signup = async (req, res) => {
   const { name, email, password, designation, department } = req.body;
 
@@ -117,8 +115,7 @@ const signin = async (req, res) => {
 };
 
 const getMe = async (req, res) => {
-  const userFound = await User.findById(req.user._id).populate('sentMails')
-  console.log(userFound);
+  const userFound = await User.findById(req.user._id).populate("sentMails");
   return res
     .status(200)
     .json({ user: { ...userFound._doc, password: undefined } });

@@ -6,41 +6,63 @@
 }
 
 #mom,
-#mom-2 {
+#mom-2,
+#sent {
   margin-top: 1rem;
   padding: 1rem 0.5rem;
   border: 10px solid var(--nav-color);
   border-radius: 20px;
 }
-#mom-2 {
+#mom-2,
+#sent {
   background-color: var(--nav-color);
 }
-#mom-2 .titles {
+#mom-2 .titles,
+#sent .titles {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  color: red;
+  text-decoration: underline;
+  margin-bottom: 1rem;
 }
-#mom-2 .content .title {
+#mom-2 .content .title,
+#sent .content .title {
   text-transform: uppercase;
   font-weight: bold;
+  font-size: 2rem;
+  color: red;
 }
 
-#mom-2 .content {
-  color: white;
+#mom-2 .content,
+#sent .content {
+  color: black;
 }
 
-#mom-2 .content .single-row ul li {
-  padding: 0.5rem 1rem;
+#mom-2 .content .single-row ul li,
+#sent .content .single-row ul li {
+  padding: 1rem 1rem;
 }
 
-#mom-2 .content .items {
+#mom-2 .content .items,
+#sent .content .items {
   list-style: none;
 }
 
-#mom-2 .content .items .item {
+#mom-2 .content .items .item,
+#sent .content .items .item {
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  border: 1px solid black;
+  font-size: 0.8rem;
+}
+
+#mom-2 .content .items .item:not(:first-child),
+#sent .content .items .item:not(:first-child) {
+  background: linear-gradient(
+    90deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(232, 232, 232, 1) 32%
+  );
 }

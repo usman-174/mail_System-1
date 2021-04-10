@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Form, InputGroup, Row } from "react-bootstrap";
+import { Button, Col, Form } from "react-bootstrap";
 import "./MinutesOfMeeting.css";
 
 export default function MinutesOfMeeting() {
@@ -82,48 +82,6 @@ export default function MinutesOfMeeting() {
             Add
           </Button>
         </Form>
-      </div>
-      <div id="mom-2">
-        <div className="content">
-          <Row>
-            <Col lg={12} className="single-row">
-              <div className="rows">
-                <div className="titles">
-                  <div className="title">Name</div>
-                  <div className="title">Appointment</div>
-                  <div className="title">Role</div>
-                </div>
-                <ul className="items">
-                  <div className="item">
-                    <li>ahsgdsa</li>
-                    <li>ahsgdsa</li>
-                    <li>ahsgdsa</li>
-                  </div>
-                  <div className="item">
-                    <li>ahsgdsa</li>
-                    <li>ahsgdsa</li>
-                    <li>ahsgdsa</li>
-                  </div>
-                  <div className="item">
-                    <li>ahsgdsa</li>
-                    <li>ahsgdsa</li>
-                    <li>ahsgdsa</li>
-                  </div>
-                  <div className="item">
-                    <li>ahsgdsa</li>
-                    <li>ahsgdsa</li>
-                    <li>ahsgdsa</li>
-                  </div>
-                  <div className="item">
-                    <li>ahsgdsa</li>
-                    <li>ahsgdsa</li>
-                    <li>ahsgdsa</li>
-                  </div>
-                </ul>
-              </div>
-            </Col>
-          </Row>
-        </div>
       </div>
     </>
   );

@@ -11,7 +11,7 @@ export default function MailButtons() {
         <div className="content">
           <MailButton image={one} text="Inbox" route="/inbox" />
           <MailButton image={five} text="compose" route="/compose" />
-          <MailButton image={three} text="Sent" route="/" />
+          <MailButton image={three} text="Sent" route="/sent" />
           <MailButton image={four} text="Urgent" route="/" />
         </div>
       </Container>
