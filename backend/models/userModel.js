@@ -33,11 +33,8 @@ const userSchema = new schema(
       type: String,
       required: false,
     },
-    mailId: {
-      type: String,
-      ref: "Mail",
-      default: shortid.generate,
-    },
+    sentMails : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Mail' }]
+    
   },
   { timestamps: true }
 );

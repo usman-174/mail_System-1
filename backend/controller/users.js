@@ -29,7 +29,7 @@ const signup = async (req, res) => {
       department,
     });
 
-    await Mail.create({ ...Mail, userId: newUser._id });
+    // await Mail.create({ ...Mail, userId: newUser._id });
 
     // Assigning the token
     const token = jwt.sign(
@@ -109,7 +109,7 @@ const signin = async (req, res) => {
       })
     );
 
-    res.status(200).json({ user: { ...foundUser, password: undefined } });
+    res.status(200).json({ user: { ...foundUser._doc, password: undefined } });
     // res.status(200).json({ theUser: foundUser, token });
   } catch (error) {
     console.log(error);
@@ -117,9 +117,11 @@ const signin = async (req, res) => {
 };
 
 const getMe = async (req, res) => {
+  const userFound = await User.findById(req.user._id).populate('sentMails')
+  console.log(userFound);
   return res
     .status(200)
-    .json({ user: { ...req.user._doc, password: undefined } });
+    .json({ user: { ...userFound._doc, password: undefined } });
 };
 const logout = async (req, res) => {
   res.clearCookie("token");

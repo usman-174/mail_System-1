@@ -13,8 +13,8 @@ const auth = async (req, res, next) => {
       throw new Error("TOKEN EXPIRED");
     }
     const exist = await User.findById(decoded?.id);
-    if (exist) req.user = exist;
-    return next();
+    if (exist){ req.user = exist;
+    return next();}
   } catch (error) {
     console.error("error:", error.message);
   }
